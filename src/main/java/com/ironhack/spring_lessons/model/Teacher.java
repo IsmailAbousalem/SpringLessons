@@ -10,15 +10,15 @@ public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
+    private String teacher;
 
 //    Empty constructor is absolutely necessary for Spring to work properly
     public Teacher() {
     }
 
 //    NOT NECESSARY. EMPTY CONSTRUCTOR IS NECESSARY
-    public Teacher(String name) {
-        this.name = name;
+    public Teacher(String teacher) {
+        this.teacher = teacher;
     }
 
 //    GETTERS AND SETTERS ARE NECESSARY FOR SPRING TO WORK PROPERLY
@@ -30,12 +30,12 @@ public class Teacher {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTeacher() {
+        return teacher;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTeacher(String name) {
+        this.teacher = name;
     }
 
 //    NOT NECESSARY AGAIN
@@ -43,7 +43,7 @@ public class Teacher {
     public String toString() {
         return "Teacher{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + teacher + '\'' +
                 '}';
     }
 }
