@@ -1,6 +1,7 @@
 package com.ironhack.spring_lessons.repository;
 
 import com.ironhack.spring_lessons.model.Course;
+import com.ironhack.spring_lessons.model.Teacher;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,12 +18,18 @@ class CourseRepositoryTest {
     @Autowired
     CourseRepository courseRepository;
 
+    @Autowired
+    TeacherRepository teacherRepository;
+
     @BeforeEach
     void setUp() {
-        Course algebra = new Course("Algebra", 150, "B1", "3 weeks", 3);
-        courseRepository.save(algebra);
-    }
+        Optional<Teacher> teacherOptional = teacherRepository.findById(2);
 
+        if (teacherOptional.isPresent()){
+            Course algebra = new Course("Algebra", 150, "B1", "3 weeks", teacherOptional.get());
+            courseRepository.save(algebra);
+        }
+    }
 
     @AfterEach
     void tearDown() {

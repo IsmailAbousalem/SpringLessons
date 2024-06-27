@@ -1,9 +1,8 @@
 package com.ironhack.spring_lessons.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Teacher {
@@ -12,7 +11,14 @@ public class Teacher {
     private Integer id;
     private String teacher;
 
-//    Empty constructor is absolutely necessary for Spring to work properly
+    @OneToOne
+    private Address address;
+
+//    Use only if we want a bidirectional relationship
+//    If used, we must be careful not to create a stackOverflow Error (infinite loop)
+//    @OneToMany(mappedBy = "teacher")
+//    List<Course> courses;
+
     public Teacher() {
     }
 
@@ -21,7 +27,12 @@ public class Teacher {
         this.teacher = teacher;
     }
 
-//    GETTERS AND SETTERS ARE NECESSARY FOR SPRING TO WORK PROPERLY
+    public Teacher(String teacher, Address address) {
+        this.teacher = teacher;
+        this.address = address;
+    }
+
+    //    GETTERS AND SETTERS ARE NECESSARY FOR SPRING TO WORK PROPERLY
     public Integer getId() {
         return id;
     }
@@ -38,12 +49,28 @@ public class Teacher {
         this.teacher = name;
     }
 
-//    NOT NECESSARY AGAIN
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+//    public List<Course> getCourses() {
+//        return courses;
+//    }
+//
+//    public void setCourses(List<Course> courses) {
+//        this.courses = courses;
+//    }
+
     @Override
     public String toString() {
         return "Teacher{" +
                 "id=" + id +
-                ", name='" + teacher + '\'' +
+                ", teacher='" + teacher + '\'' +
+                ", address=" + address +
                 '}';
     }
 }

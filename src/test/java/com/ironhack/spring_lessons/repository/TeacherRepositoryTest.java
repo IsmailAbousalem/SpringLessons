@@ -1,5 +1,6 @@
 package com.ironhack.spring_lessons.repository;
 
+import com.ironhack.spring_lessons.model.Address;
 import com.ironhack.spring_lessons.model.Teacher;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,11 +18,17 @@ import static org.junit.jupiter.api.Assertions.*;
         @Autowired
         TeacherRepository teacherRepository;
 
+        @Autowired
+        AddressRepository addressRepository;
+
         Teacher teacher;
 
         @BeforeEach
         void setUp() {
-            teacher = new Teacher("John Doe");
+            Address address = new Address(4, "Great Avenue", "4C");
+            addressRepository.save(address);
+
+            teacher = new Teacher("John Doe", address);
             teacherRepository.save(teacher);
             System.out.println(teacher);
         }
@@ -29,6 +36,7 @@ import static org.junit.jupiter.api.Assertions.*;
         @AfterEach
         void tearDown() {
             teacherRepository.deleteById(teacher.getId());
+            addressRepository.deleteById(4);
         }
 
         @Test

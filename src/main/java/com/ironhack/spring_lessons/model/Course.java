@@ -2,6 +2,7 @@ package com.ironhack.spring_lessons.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Course {
@@ -10,18 +11,19 @@ public class Course {
     private Integer hours;
     private String classroom;
     private String vacations;
-    private Integer teacherId;
 
+    @ManyToOne
+    private Teacher teacher;
 
     public Course() {
     }
 
-    public Course(String course, Integer hours, String classroom, String vacations, Integer teacherId) {
+    public Course(String course, Integer hours, String classroom, String vacations, Teacher teacher) {
         this.course = course;
         this.hours = hours;
         this.classroom = classroom;
         this.vacations = vacations;
-        this.teacherId = teacherId;
+        this.teacher = teacher;
     }
 
     public String getCourse() {
@@ -56,12 +58,12 @@ public class Course {
         this.vacations = vacations;
     }
 
-    public Integer getTeacherId() {
-        return teacherId;
+    public Teacher getTeacher() {
+        return teacher;
     }
 
-    public void setTeacherId(Integer teacherId) {
-        this.teacherId = teacherId;
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
     @Override
@@ -71,7 +73,7 @@ public class Course {
                 ", hours=" + hours +
                 ", classroom='" + classroom + '\'' +
                 ", vacations='" + vacations + '\'' +
-                ", teacherId=" + teacherId +
+                ", teacher=" + teacher +
                 '}';
     }
 }
