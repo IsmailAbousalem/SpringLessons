@@ -45,7 +45,7 @@ public class CourseController {
     }
 
 
-//    ********************************************* POST *********************************************
+//    ********************************************* POST - CREATING INFO/SAVING *********************************************
 
     @PostMapping("/courses")
     @ResponseStatus(HttpStatus.CREATED)
@@ -54,7 +54,7 @@ public class CourseController {
     }
 
 
-    //    ********************************************* PUT *********************************************
+    //    ********************************************* PUT - UPDATING INFO, BUT NEEDS ALL OF THE INFO *********************************************
 
     @PutMapping("/courses/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -63,7 +63,7 @@ public class CourseController {
     }
 
 
-    //    ********************************************* PATCH *********************************************
+    //    ********************************************* PATCH - UPDATING INFO, BUT NEEDS THE SPECIFIC PIECE OF INFO *********************************************
 
     @PatchMapping("/courses/hours/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -78,7 +78,7 @@ public class CourseController {
     }
 
 
-    //    ********************************************* DELETE *********************************************
+    //    ********************************************* DELETE - DELETE OR REMOVE A RECORD FROM A TABLE *********************************************
 
     @DeleteMapping("/courses/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

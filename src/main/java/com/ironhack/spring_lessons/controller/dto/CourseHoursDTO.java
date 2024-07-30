@@ -8,6 +8,13 @@ public class CourseHoursDTO {
     @Min(30)
     private Integer hours;
 
+    public CourseHoursDTO() {
+    }
+
+    public CourseHoursDTO(Integer hours) {
+        this.hours = hours;
+    }
+
     public Integer getHours() {
         return hours;
     }
